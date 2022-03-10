@@ -1,3 +1,12 @@
+// components
+import LoginForm from '../components/LoginForm';
+// custom
+import '../custom/pages/login.scss';
+
 export default function Login() {
-    return (<h1>Test page login</h1>)
+    return (
+        <div className='main bg-dark'>
+            <LoginForm />
+        </div>
+    )
 }
