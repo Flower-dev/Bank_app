@@ -1,4 +1,6 @@
 import LogoImg from '../assets/img/argentBankLogo.png';
+// custom 
+import '../custom/logo.scss';
 
 export default function Logo() {
 

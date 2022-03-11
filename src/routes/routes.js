@@ -1,14 +1,14 @@
 // routes
-import { Navigate, useRoutes } from 'react-router-dom';
+import { useRoutes } from 'react-router-dom';
 // pages
+import Home from '../pages/Home';
 import User from '../pages/User';
 import Login from '../pages/Login';
-import Home from '../pages/Home';
 
 export default function Routes() {
     return useRoutes([
       {
-        path: '/home',
+        path: '/',
         element: <Home />,
       },
       {
@@ -16,9 +16,8 @@ export default function Routes() {
         element:  <User /> 
       },
       {
-        path: '/',
+        path: '/login',
         element: <Login />,
-      },
-      // { path: '*', element: <Navigate to="/404" replace /> }
+      }
     ]);
 }
