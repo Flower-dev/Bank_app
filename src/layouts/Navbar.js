@@ -9,7 +9,9 @@ export default function Navbar() {
     return(
         <>
             <div className="main-nav-logo">
-                <Logo/>
+                
+                <Logo link to="/"/>
+                
             </div> 
             <div>
                 <div className="main-nav-item">
@@ -20,3 +22,6 @@ export default function Navbar() {
         </>
     )
 }
+
+
+// IMPORTANT : Gérer le lien pour retour vers la page HOME
