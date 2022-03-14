@@ -50,3 +50,5 @@ export default function useApi () {
     }
     return { get, post, del }
 }
+
+// créer une méthode put 
