@@ -12,7 +12,7 @@ const SignupSchema = yup.object().shape({
     password: yup.string().required(),
   });
 
-export default function LoginForm() {
+export default function LoginForm({ login }) {
     
     const {
         register,
@@ -23,33 +23,34 @@ export default function LoginForm() {
         resolver: yupResolver(SignupSchema)
     });
     const onSubmit = async (data) => {
-        // await login(data.username, data.password)
+        await login(data.username, data.password)
         reset()
     }
      
     console.log(errors);
 
     return (
+            <form onSubmit={handleSubmit(onSubmit)}>
         <div className="sign-in-content">
             <i className="fa fa-user-circle sign-in-icon"></i>
             <h1>Sign In</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-wrapper">
-                    <label>Username</label>
+                    <label htmlFor="username">Username</label>
                     <input type="text" id="username" {...register("username")} />
                     {errors.username && <p>{errors.username.message}</p>}  
                 </div>
                 <div className="input-wrapper">
-                    <label>Password</label>
+                    <label htmlFor="password">Password</label>
                     <input type="text" id="password" {...register("password")}/>
+                    {errors.password && <p>{errors.username.password}</p>} 
                 </div>
                 <div className="input-remember">
                     <input type="checkbox" id="remember-me" />
                     <label>Remember me</label>
                 </div>
-                <input type="submit" />
+                <button type="submit">Sign In</button>
         
-            </form>
         </div>
+            </form>
     )
 }
