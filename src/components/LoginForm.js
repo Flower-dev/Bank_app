@@ -1,11 +1,18 @@
 import { useState } from 'react';
-import axios from 'axios';
 // react form 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+// routes
+import { useNavigate } from "react-router-dom";
+// redux
+import { useDispatch } from "react-redux";
+import { setToken } from "../redux/userSlice";
+// hooks
+import  login  from '../hooks/useApi';
 // custom 
 import '../custom/loginForm.scss';
+
 
 
 const SignupSchema = yup.object().shape({
@@ -14,6 +21,11 @@ const SignupSchema = yup.object().shape({
   });
 
 export default function LoginForm() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
@@ -21,31 +33,21 @@ export default function LoginForm() {
       } = useForm({
         resolver: yupResolver(SignupSchema)
       });
+ 
     
-      const [role, setRole] = useState("tech");
-      const [resStatus, setResStatus] = useState("");
-    
-      const onSubmit = (data) => {
-        data.role = role;
-        console.log(data);
-    
-        axios
-          .post('http://localhost:3001/user/login', data)
-          .then(function (response) {
-            console.log(response.status);
-            if (response.status === 200) {
-              setResStatus("Successful Registration!");
-            } else {
-              setResStatus("error");
+      const onSubmit = async (e) => {
+        try {
+            e.preventDefault();
+            const token = await login(email, password);
+            if (token) {
+                dispatch(setToken(token));
+                navigate("/user");
             }
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    };
-    
-      console.log(resStatus);
-    
+        } catch (e) {
+            console.log(e);
+        }
+    }
+   
     return (
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='sign-in-content'>
