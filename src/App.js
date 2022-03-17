@@ -1,21 +1,39 @@
+import * as React from "react";
 // routes
-import { BrowserRouter as Router } from 'react-router-dom';
-import Routes from './routes/index';
-// layout
-import Navbar from './layouts/Navbar'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// autorization
+import AuthRoute from "./guards/AuthRoute";
+// pages
+import Home from './pages/Home';
+import Login from './pages/Login';
+import User from './pages/User';
 // components
+import Navbar from './layouts/Navbar';
 import Footer from './components/Footer';
 
-function App() {
+
+export default function App() {
   return (
     <>
       <Navbar/>
-      <Router>
-        <Routes/>
-      </Router>
+      <BrowserRouter>
+        <div className="container" type="guest">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/profile"
+              element={
+                <AuthRoute>
+                  <User />
+                </AuthRoute>
+              }
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
       <Footer/>
     </>
   );
 }
 
-export default App;

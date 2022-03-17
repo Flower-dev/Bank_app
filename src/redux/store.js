@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from "redux-persist";
-import userReducer from '../user/userSlice';
+import userReducer from './slice';
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
