@@ -20,9 +20,9 @@ export default function Navbar() {
 
     return (
         <div className='main-nav'>
-            {/* <Link to={`/`} className='main-nav-logo'> */}
+            <Link to='/' className='main-nav-logo'>
                 <Logo/>
-            {/* </Link>
+            </Link>
             {
                 token ?
                     (
@@ -44,7 +44,7 @@ export default function Navbar() {
                             <p className='nav-text'>Sign In</p>
                         </Link>
                     )
-            } */}
+            }
         </div>
     )
 }

@@ -15,13 +15,10 @@ import Footer from './components/Footer';
 export default function App() {
   return (
     <>
-      <Navbar/> 
       <BrowserRouter>
+      <Navbar/> 
         <div className="container">
           <Switch>
-            <Route path="/">
-              <Home />
-            </Route>
             <Route path="/login">
               <Login />
             </Route>
@@ -29,6 +26,9 @@ export default function App() {
               <AuthRoute>
                 <User />
               </AuthRoute>
+            </Route>
+            <Route path="/">
+              <Home />
             </Route>
           </Switch>
         </div>
