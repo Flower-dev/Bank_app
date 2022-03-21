@@ -8,16 +8,16 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import User from './pages/User';
 // components
-// import Navbar from './layouts/Navbar';
+import Navbar from './layouts/Navbar';
 import Footer from './components/Footer';
 
 
 export default function App() {
   return (
     <>
-      {/* <Navbar/> */}
+      <Navbar/> 
       <BrowserRouter>
-        <div className="container" type="guest">
+        <div className="container">
           <Switch>
             <Route path="/">
               <Home />
