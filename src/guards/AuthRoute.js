@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 import {
     Route,
-    Navigate,
-} from "react-router-dom";
-import { useSelector } from "react-redux";
+    Redirect,
+} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function AuthRoute(props) {
     const { path, children } = props;
@@ -15,5 +15,5 @@ export default function AuthRoute(props) {
             </Route>
         )
     }
-    return <Navigate to="/login" />
+    return <Redirect to='/login' />
 }

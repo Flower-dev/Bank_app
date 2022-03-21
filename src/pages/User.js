@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
-import { setInfos } from '../redux/slice'
+import { setInfos } from '../redux/slices/user'
 // hooks
 import  useApi from '../hooks/useApi'
 // components
@@ -92,24 +92,24 @@ export default function User() {
     ]
 
     return (
-        <div className="main bg-dark">
-            <div className="header">
+        <div className='main bg-dark'>
+            <div className='header'>
                 <h1>Welcome back</h1>
                 { displayForm ?
                     (
                         <form>
-                            <input type="text" onChange={onFirstNameChange} value={firstNameForm} placeholder={firstNameForm} />
-                            <input type="text" onChange={onLastNameChange} value={lastNameForm} placeholder={lastNameForm} />
+                            <input type='text' onChange={onFirstNameChange} value={firstNameForm} placeholder={firstNameForm} />
+                            <input type='text' onChange={onLastNameChange} value={lastNameForm} placeholder={lastNameForm} />
                             <div>
-                                <button onClick={onSave} className="edit-button">Save</button>
-                                <button onClick={onCancel} className="edit-button">Cancel</button>
+                                <button onClick={onSave} className='edit-button'>Save</button>
+                                <button onClick={onCancel} className='edit-button'>Cancel</button>
                             </div>
                         </form>
                     ) :
                     (
                         <div>
                             <h1>{firstName} {lastName}!</h1>
-                            <button onClick={onEdit} className="edit-button">Edit Name</button>
+                            <button onClick={onEdit} className='edit-button'>Edit Name</button>
                         </div>
                     )
                 }
