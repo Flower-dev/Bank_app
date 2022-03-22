@@ -81,10 +81,18 @@ export default function User() {
                 <h1>Welcome back</h1>
                 { displayForm ?
                     (
-                        <form>
-                            <input type='text' onChange={onFirstNameChange} value={firstNameForm} placeholder={firstNameForm} />
-                            <input type='text' onChange={onLastNameChange} value={lastNameForm} placeholder={lastNameForm} />
-                            <div>
+                        <form className='form-profile'>
+                            <div className='container-wrapper-profile'>
+                                <div className='input-wrapper-profile'>
+                                    <label htmlFor='firstname'>First Name</label>
+                                    <input type='text' onChange={onFirstNameChange} value={firstNameForm} />
+                                </div>
+                                <div className='input-wrapper-profile'>
+                                    <label htmlFor='lastname'>Last Name</label>
+                                    <input type='text' onChange={onLastNameChange} value={lastNameForm} />
+                                </div>
+                            </div>
+                            <div className='button-wrapper-profile'>
                                 <button onClick={onSave} className='edit-button'>Save</button>
                                 <button onClick={onCancel} className='edit-button'>Cancel</button>
                             </div>

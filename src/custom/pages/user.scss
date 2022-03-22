@@ -4,10 +4,48 @@
     color: #fff;
     font-weight: bold;
     padding: 10px;
+    margin: 1%;
 }
   
 .header {
     color: #fff;
     margin-bottom: 2rem;
+}
+
+.form-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.container-wrapper-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    //width: 80%;
+}
+
+.input-wrapper-profile {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.input-wrapper-profile label {
+    font-weight: bold;
+}
+  
+.input-wrapper-profile input {
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+.button-wrapper-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    //width: 30%;
 }
   
