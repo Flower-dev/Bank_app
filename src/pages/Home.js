@@ -7,6 +7,8 @@ import Security from '../assets/img/icon-security.png';
 // custom
 import '../custom/pages/home.scss';
 
+// -----------------------------------------
+
 export default function Home() {
 
     const DISPLAYCARD = [
@@ -50,6 +52,5 @@ export default function Home() {
                 )})} 
             </div>
         </>
-    
     )
 }

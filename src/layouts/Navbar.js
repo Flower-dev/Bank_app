@@ -1,17 +1,28 @@
+// redux
+import { useDispatch, useSelector } from 'react-redux';
+import { setInfos, setToken } from '../redux/slices/user';
+// routes
+import { Link, useHistory } from 'react-router-dom';
+// components
+import Logo from '../components/Logo';
+// icons (fontawesome lib)
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { setInfos, setToken } from '../redux/slices/user';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import Logo from '../components/Logo';
+// custom
+import '../custom/navbar.scss';
+
+
+// -------------------------------------------------------------
 
 export default function Navbar() {
+    // redux
     const dispatch = useDispatch();
-    const history = useHistory();
     const firstName = useSelector((state) => state.user.infos.firstName);
     const token = useSelector((state) => state.user.token);
-
+    // routes
+    const history = useHistory();
+    
     const onSignOut = () => {
         dispatch(setToken(''));
         dispatch(setInfos({}));
@@ -27,7 +38,7 @@ export default function Navbar() {
                 token ?
                     (
                         <div className='nav'>
-                            <Link to={`/profile`} className='main-nav-item'>
+                            <Link to='/profile' className='main-nav-item'>
                                 <FontAwesomeIcon icon={faUserCircle} />
                                 <p className='nav-text'>{firstName}</p>
                             </Link>
@@ -39,7 +50,7 @@ export default function Navbar() {
                         </div>
                     ) :
                     (
-                        <Link to={`/login`} className='main-nav-item'>
+                        <Link to='/login' className='main-nav-item'>
                             <FontAwesomeIcon icon={faUserCircle} />
                             <p className='nav-text'>Sign In</p>
                         </Link>

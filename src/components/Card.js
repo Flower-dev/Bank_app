@@ -1,7 +1,7 @@
 // custom
 import '../custom/card.scss';
 
-export default function Card({icon, description, title, text} ) {
+export default function Card({ icon, description, title, text }) {
     return (
         <div className='feature-item'>
             <img src={icon} alt={description} className='feature-icon' />
