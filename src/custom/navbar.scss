@@ -38,6 +38,14 @@
     flex-direction: row;
     justify-content: space-around;
 }
-  
+
+@media (max-width: 720px) {
+    .nav {
+        display: flex;
+        flex-direction: column;
+        height: 5%;
+        width: 20%;
+    }
+} 
 
   

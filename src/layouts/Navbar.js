@@ -34,27 +34,25 @@ export default function Navbar() {
             <Link to='/' className='main-nav-logo'>
                 <Logo/>
             </Link>
-            {
-                token ?
-                    (
-                        <div className='nav'>
-                            <Link to='/profile' className='main-nav-item'>
-                                <FontAwesomeIcon icon={faUserCircle} />
-                                <p className='nav-text'>{firstName}</p>
-                            </Link>
-
-                            <div onClick={onSignOut} className='main-nav-item'>
-                                <FontAwesomeIcon icon={faSignOutAlt} />
-                                <p className='nav-text'>Sign Out</p>
-                            </div>
-                        </div>
-                    ) :
-                    (
-                        <Link to='/login' className='main-nav-item'>
+            {token ?
+                (
+                    <div className='nav'>
+                        <Link to='/profile' className='main-nav-item'>
                             <FontAwesomeIcon icon={faUserCircle} />
-                            <p className='nav-text'>Sign In</p>
+                            <p className='nav-text'>{firstName}</p>
                         </Link>
-                    )
+                        <div onClick={onSignOut} className='main-nav-item'>
+                            <FontAwesomeIcon icon={faSignOutAlt} />
+                            <p className='nav-text'>Sign Out</p>
+                        </div>
+                    </div>
+                ) :
+                (
+                    <Link to='/login' className='main-nav-item'>
+                        <FontAwesomeIcon icon={faUserCircle} />
+                        <p className='nav-text'>Sign In</p>
+                    </Link>
+                )
             }
         </div>
     )
