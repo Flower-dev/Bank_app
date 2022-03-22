@@ -6,18 +6,23 @@ import { setInfos } from '../redux/slices/user'
 import  useApi from '../hooks/useApi'
 // components
 import AccountCard from '../components/AccountCard';
+// mocks
+import DATA from '../_mocks_/profile'
 // custom
 import '../custom/pages/user.scss';
 
+// ------------------------------------------------------------
 
 export default function User() {
+    // redux
+    const dispatch = useDispatch();
     const token = useSelector((state) => state.user.token);
     const firstName = useSelector((state) => state.user.infos.firstName);
     const lastName = useSelector((state) => state.user.infos.lastName);
+    // state
     const [firstNameForm, setFirstNameForm] = useState('');
     const [lastNameForm, setLastNameForm] = useState('');
     const [displayForm, setDisplayForm] = useState(false);
-    const dispatch = useDispatch();
 
     const onFirstNameChange = (e) => {
         setFirstNameForm(e.target.value);
@@ -69,27 +74,6 @@ export default function User() {
             setDisplayForm(false);
         }
     }
- 
-    const DATA = [
-        {
-            id: 1,
-            title: 'Argent Bank Checking (x8349)',
-            amount: '$2,082.79',
-            description: 'Available Balance',
-        },
-        {
-            id: 2,
-            title: 'Argent Bank Savings (x6712)',
-            amount: '$10,928.42',
-            description: 'Available Balance',
-        },
-        {
-            id: 3,
-            title: 'Argent Bank Credit Card (x8349)',
-            amount: '$184.30',
-            description: 'Current Balance',
-        }
-    ]
 
     return (
         <div className='main bg-dark'>
