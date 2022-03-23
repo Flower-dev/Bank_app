@@ -46,7 +46,7 @@ export default function User() {
         } catch (e) {
             console.log(e);
         }
-    }, [token]);
+    }, [token]); // eslint-disable-next-line
 
     const onEdit = () => {
         if (!displayForm) {
