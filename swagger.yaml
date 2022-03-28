@@ -117,6 +117,7 @@ paths:
       tags:
         - Transactions
       summary: User Transactions API
+      description: transactions list
       parameters:
         - in: header
           name: Authorization
@@ -129,12 +130,15 @@ paths:
         "200":
           description: User transactions retrieved successfully
           schema:
-            $ref: "#/definitions/UserTransaction"
+            type: array
+            items:
+              $ref: "#/definitions/Transaction" 
         "401":
           description: Unauthorized
         "500":
           description: Internal Server Error
-  user/profile/transaction/{transactionId}:
+          
+  /user/profile/transaction/{id}:
     put:
       security:
         - Bearer: []
@@ -158,14 +162,14 @@ paths:
           description: Update selected transaction
           required: true
           schema:
-            $ref: "#/definitions/UserCustomTransaction"
+            $ref: "#/definitions/TransactionInfos"
       produces:
         - application/json
       responses:
         "200":
           description: User transaction modified successfully
           schema:
-            $ref: "#/definitions/UserTransaction"
+            $ref: "#/definitions/TransactionInfos"
         "400":
           description: Invalid Fields
         "401":
@@ -196,7 +200,7 @@ paths:
         "200":
           description: User transaction retrieved successfully
           schema:
-            $ref: "#/definitions/UserTransaction"
+            $ref: "#/definitions/TransactionInfos"
         "401":
           description: Unauthorized
         "500":
@@ -222,10 +226,8 @@ paths:
       produces:
         - application/json
       responses:
-        "200":
+        "204":
           description: User transaction deleted successfully
-          schema:
-            $ref: "#/definitions/UserTransaction"
         "401":
           description: Unauthorized
         "500":
@@ -285,47 +287,7 @@ definitions:
       lastName:
         type: string
   
-  Transactions:
-    type : array
-    items:
-      type: object
-    properties: 
-      id:
-        type: string
-        description: transaction's ID
-        example: dbdvs561dbdb
-      date:
-        type: string
-        format: date-time
-        description: transaction's date
-        example: '2022-03-22'
-      description:
-        type: string
-        description: transaction's description
-        example: Restole16
-      amount:
-        type: integer
-        format: number
-        description: transaction's amount
-        example: 40
-      balance:
-        type: integer
-        format: number
-        description: account balance after transaction
-        example: 3210  
-      transaction type:
-        type: string
-        description: transaction's type
-        example: Electronic
-      category:
-        type: string
-        description: transaction's category
-        example: Food
-      notes:
-        type: string
-        description: transaction's notes
-        example: sushi    
-    Transaction:
+  Transaction:
       type: object
       properties:
         id:
@@ -351,6 +313,13 @@ definitions:
           format: number
           description: account balance after transaction
           example: 3210  
+        infos:
+          type: object
+          $ref: "#/definitions/TransactionInfos"
+          
+  TransactionInfos: 
+      type: object
+      properties: 
         transaction type:
           type: string
           description: transaction's type
@@ -362,14 +331,5 @@ definitions:
         notes:
           type: string
           description: transaction's notes
-          example: sushi    
-
-UserCustomTransaction:
-    type: object
-    properties:
-      category:
-        type: string
-        description: transaction category
-      notes:
-        type: string
-        description: notes for the transaction
+          example: sushi  
+          
