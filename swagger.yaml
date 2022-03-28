@@ -117,7 +117,7 @@ paths:
       tags:
         - Transactions
       summary: User Transactions API
-      description: transactions list
+      description: API to dispay the transactions' list for the current month
       parameters:
         - in: header
           name: Authorization
